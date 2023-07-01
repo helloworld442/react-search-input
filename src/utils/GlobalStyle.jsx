@@ -19,6 +19,11 @@ const GlobalStyle = createGlobalStyle`
         list-style: none;
     }
 
+    h2,h3 {
+        padding : 0;
+        margin : 0;
+    }
+
     input {
         outline : none;
     }

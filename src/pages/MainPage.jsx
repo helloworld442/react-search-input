@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import SearchHeader from "../components/search/SearchHeader";
 import SearchFooter from "../components/search/SearchFooter";
 import SearchFormContainer from "../containers/SearchFormContaienr";
+import { useState } from "react";
 
 const MainPageBlock = styled.div`
   position: relative;
@@ -14,12 +15,16 @@ const MainPageBlock = styled.div`
   flex-direction: column;
 `;
 
-const MainPage = () => (
-  <MainPageBlock>
-    <SearchHeader />
-    <SearchFormContainer />
-    <SearchFooter />
-  </MainPageBlock>
-);
-
+const MainPage = () => {
+  // 해더에서 selectBox 데이터 바뀔때마다 전체 화면 다시 리렌더링
+  const [article, setArticle] = useState("");
+  const onChangeHandler = (e) => setArticle(e.target.value);
+  return (
+    <MainPageBlock>
+      <SearchHeader onChange={onChangeHandler} />
+      <SearchFormContainer article={article} />
+      <SearchFooter />
+    </MainPageBlock>
+  );
+};
 export default MainPage;

@@ -4,41 +4,46 @@ import { styled } from "styled-components";
 import StyledInputBox from "../StyledInputBox";
 import StyledButtonBox from "../common/StyledButtonBox";
 import StyledLogoBox from "../common/StyledLogoBox";
+import StyledFormBox from "../StyledFormBox";
+import StyledListBox from "../StyledListBox";
+import StyledItemBox from "../common/StyledItemBox";
+import { Link } from "react-router-dom";
 
 const SearchFormBlock = styled.div`
   width: 100%;
-  height: 300px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin-top: 30px;
-
-  > #search-form {
-    width: 600px;
-    display: flex;
-    justify-content: space-between;
-    padding: 36px 24px;
-    border-radius: 10px;
-    background: #fff;
-  }
 `;
 
-const SearchForm = ({ title, onChange }) => (
+const SearchForm = ({ title, data, onChange, onSubmit, check }) => (
   <SearchFormBlock>
     <StyledLogoBox />
-    <form id="search-form">
+    <StyledFormBox onSubmit={onSubmit}>
       <StyledInputBox
         type="text"
         id="title"
         placeholder="Start typing something..."
         value={title}
         onChange={onChange}
+        required={true}
       />
       <StyledButtonBox type="submit">
         <FontAwesomeIcon icon={faMagnifyingGlass} />
       </StyledButtonBox>
-    </form>
+    </StyledFormBox>
+    <StyledListBox>
+      {data &&
+        data.map((val, idx) => (
+          <StyledItemBox key={idx}>
+            <h2>{check(val.title)}</h2>
+            <Link to={val.url}>go to page!</Link>
+          </StyledItemBox>
+        ))}
+    </StyledListBox>
   </SearchFormBlock>
 );
 
