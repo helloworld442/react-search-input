@@ -17,7 +17,7 @@ const MainPageBlock = styled.div`
 
 const MainPage = () => {
   // 해더에서 selectBox 데이터 바뀔때마다 전체 화면 다시 리렌더링
-  const [article, setArticle] = useState("");
+  const [article, setArticle] = useState("web");
   const onChangeHandler = (e) => setArticle(e.target.value);
   return (
     <MainPageBlock>

@@ -1,13 +1,14 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { styled } from "styled-components";
-import StyledInputBox from "../StyledInputBox";
-import StyledButtonBox from "../common/StyledButtonBox";
-import StyledLogoBox from "../common/StyledLogoBox";
-import StyledFormBox from "../StyledFormBox";
-import StyledListBox from "../StyledListBox";
-import StyledItemBox from "../common/StyledItemBox";
 import { Link } from "react-router-dom";
+import {
+  StyledButtonBox,
+  StyledInputBox,
+  StyledItemBox,
+  StyledLogoBox,
+  StyledListBox,
+} from "../common/StyledBox";
 
 const SearchFormBlock = styled.div`
   width: 100%;
@@ -19,27 +20,26 @@ const SearchFormBlock = styled.div`
   margin-top: 30px;
 `;
 
-const SearchForm = ({ title, data, onChange, onSubmit, check }) => (
+const SearchForm = ({ data, onChange, onSubmit }) => (
   <SearchFormBlock>
-    <StyledLogoBox />
-    <StyledFormBox onSubmit={onSubmit}>
-      <StyledInputBox
-        type="text"
-        id="title"
-        placeholder="Start typing something..."
-        value={title}
-        onChange={onChange}
-        required={true}
-      />
-      <StyledButtonBox type="submit">
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
-      </StyledButtonBox>
-    </StyledFormBox>
+    <StyledLogoBox src="https://assets.website-files.com/600425d25fc1287b9232414b/6004282e60565ac5cfd55643_image%202.png" />
     <StyledListBox>
+      <form onSubmit={onSubmit}>
+        <StyledInputBox
+          type="text"
+          id="title"
+          placeholder="Start typing something..."
+          onChange={onChange}
+        />
+        <StyledButtonBox type="submit">
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </StyledButtonBox>
+      </form>
+
       {data &&
         data.map((val, idx) => (
           <StyledItemBox key={idx}>
-            <h2>{check(val.title)}</h2>
+            <div dangerouslySetInnerHTML={{ __html: val.title }} />
             <Link to={val.url}>go to page!</Link>
           </StyledItemBox>
         ))}

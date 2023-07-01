@@ -19,7 +19,7 @@ const SearchDropDownBox = styled.select`
   width: 150px;
   height: 60px;
   padding: 15px;
-  margin: 15px;
+  margin: 24px;
   border: none;
   border-radius: 10px;
   outline: none;
@@ -34,11 +34,11 @@ const SearchLinkBox = styled.div`
     margin-right: 24px;
   }
 `;
-// select box 데이터 바뀔 때마다 main page에 onchangeHandler로 보내주기
+
 const SearchHeader = ({ onChange }) => (
   <SearchHeaderBlock>
     <SearchDropDownBox onChange={onChange}>
-      <option value="none">All articles</option>
+      <option value="web">All articles</option>
       <option value="vclip">VCLIP</option>
       <option value="blog">BLOG</option>
       <option value="cafe">CAFE</option>

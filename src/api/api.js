@@ -7,15 +7,13 @@ const Kakao = axios.create({
   },
 });
 
-const getRequestDataHandler = (input, article) => {
-  article = article ? article : "web";
-  return Kakao.get(`/v2/search/${article}`, {
+const getRequestDataHandler = (input, article) =>
+  Kakao.get(`/v2/search/${article}`, {
     params: {
       query: input,
       sort: "accuracy",
       size: 3,
     },
   });
-};
 
 export default getRequestDataHandler;
