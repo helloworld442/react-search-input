@@ -8,7 +8,7 @@ import {
   StyledItemBox,
   StyledLogoBox,
   StyledListBox,
-} from "../common/StyledBox";
+} from "../common/Box";
 
 const SearchFormBlock = styled.div`
   width: 100%;
