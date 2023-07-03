@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import SearchHeader from "../components/search/SearchHeader";
-import SearchFooter from "../components/search/SearchFooter";
+import SearchHeader from "../components/Search/SearchHeader";
+import SearchFooter from "../components/Search/SearchFooter";
 import SearchFormContainer from "../containers/SearchFormContaienr";
 import { useState } from "react";
 

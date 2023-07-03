@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListUl, faUser } from "@fortawesome/free-solid-svg-icons";
+import { ButtonBox } from "../Box/ButtonBox";
+import { DropDownBox } from "../Box/DropDownBox";
+import { LinkBox } from "../Box/LinkBox";
 
 const SearchHeaderBlock = styled.div`
   width: 100%;
@@ -11,43 +13,22 @@ const SearchHeaderBlock = styled.div`
   margin-bottom: 30px;
 `;
 
-const SearchDropDownBox = styled.select`
-  -o-appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 150px;
-  height: 60px;
-  padding: 15px;
-  margin: 24px;
-  border: none;
-  border-radius: 10px;
-  outline: none;
-  font-size: 1rem;
-  background: #e0e6eb;
-`;
-
-const SearchLinkBox = styled.div`
-  font-size: 1.6rem;
-  color: gray;
-  > .icon {
-    margin-right: 24px;
-  }
-`;
-
 const SearchHeader = ({ onChange }) => (
   <SearchHeaderBlock>
-    <SearchDropDownBox onChange={onChange}>
+    <DropDownBox onChange={onChange}>
       <option value="web">All articles</option>
       <option value="vclip">VCLIP</option>
       <option value="blog">BLOG</option>
       <option value="cafe">CAFE</option>
-    </SearchDropDownBox>
-    <SearchLinkBox>
-      <FontAwesomeIcon icon={faListUl} className="icon" />
-      <FontAwesomeIcon icon={faUser} className="icon" />
-    </SearchLinkBox>
+    </DropDownBox>
+    <LinkBox>
+      <ButtonBox icon={faListUl} />
+      <ButtonBox icon={faUser} />
+    </LinkBox>
   </SearchHeaderBlock>
 );
 
 export default SearchHeader;
+
+//높은 추상화와 낮은 추상화가 섞어져 있다.
+// onchange가 어떤 역할을 하는 함수인지 명확하게 와닿지 않는다.

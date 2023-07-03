@@ -1,14 +1,10 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { styled } from "styled-components";
-import { Link } from "react-router-dom";
-import {
-  StyledButtonBox,
-  StyledInputBox,
-  StyledItemBox,
-  StyledLogoBox,
-  StyledListBox,
-} from "../common/Box";
+import { LogoBox } from "../Box/LogoBox";
+import { FormBox } from "../Box/FormBox";
+import { InputBox } from "../Box/InputBox";
+import { ButtonBox } from "../Box/ButtonBox";
+import { ItemListBox } from "../Box/ItemsBox";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchFormBlock = styled.div`
   width: 100%;
@@ -22,29 +18,17 @@ const SearchFormBlock = styled.div`
 
 const SearchForm = ({ data, onChange, onSubmit }) => (
   <SearchFormBlock>
-    <StyledLogoBox src="https://assets.website-files.com/600425d25fc1287b9232414b/6004282e60565ac5cfd55643_image%202.png" />
-    <StyledListBox>
-      <form onSubmit={onSubmit}>
-        <StyledInputBox
-          type="text"
-          id="title"
-          placeholder="Start typing something..."
-          onChange={onChange}
-        />
-        <StyledButtonBox type="submit">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </StyledButtonBox>
-      </form>
-
-      {data &&
-        data.map((val, idx) => (
-          <StyledItemBox key={idx}>
-            <div dangerouslySetInnerHTML={{ __html: val.title }} />
-            <Link to={val.url}>go to page!</Link>
-          </StyledItemBox>
-        ))}
-    </StyledListBox>
+    <LogoBox />
+    <FormBox onSubmit={onSubmit}>
+      <InputBox onChange={onChange} />
+      <ButtonBox icon={faMagnifyingGlass} />
+      <ItemListBox data={data} />
+    </FormBox>
   </SearchFormBlock>
 );
 
 export default SearchForm;
+
+// 추상화가 되지 않는다.
+// 높은 추상화와 낮은 추상화가 썪여저있다.
+// onchange , onSubmit 등 이 함수가 무슨 역할을 하는 지 명확하지 않다.
